@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { WagmiProvider, createConfig, http } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { mainnet, polygonMumbai, polygon } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import { ThemeProvider } from "@/components/themes";
@@ -14,6 +14,12 @@ const config = createConfig(
       // RPC URL for each chain
       [mainnet.id]: http(
         `https://eth-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_MAINNET}`,
+      ),
+      [polygonMumbai.id]: http(
+        `https://polygon-mumbai-pokt.nodies.app`,
+      ),
+      [polygon.id]: http(
+        `https://polygon.llamarpc.com`,
       ),
     },
 
